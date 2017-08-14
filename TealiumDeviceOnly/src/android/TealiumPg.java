@@ -87,15 +87,14 @@ public class TealiumPg extends CordovaPlugin {
             return true;
         } else if (action.equals("addRemoteCommand")) {
             String remoteCommandName = arguments.optString("commandName");
-            if (tagBridgeCallback.get(remoteCommandName) != null) {
-                callbackContext.error("Tagbridge callback already registered for this command");
-                return true;
-            }
+            Boolean isNewCommand = (tagBridgeCallback.get(remoteCommandName) == null);
             tagBridgeCallback.put(remoteCommandName, callbackContext);
             PluginResult tagBridgePluginResult = new PluginResult(PluginResult.Status.NO_RESULT);
             tagBridgePluginResult.setKeepCallback(true);
             callbackContext.sendPluginResult(tagBridgePluginResult);
-            addRemoteCommand(arguments, callbackContext);
+            if (isNewCommand) {
+                addRemoteCommand(arguments, callbackContext);
+            }
             return true;
         }
         return false;
