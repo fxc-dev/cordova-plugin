@@ -207,6 +207,8 @@ The Remote Command system allows you to control certain aspects of your app remo
 
 For example, you might wish to trigger a modal overlay in your Cordova app, which invites the user to participate in a survey when the user performs a specific function (completes a purchase, subscribes to emails etc.). The advantage of controlling this in Tealium iQ is that the text displayed in the modal overlay can be configured remotely, and additionally the overlay can be completely enabled/disabled via Tealium iQ without the need for an app release. You could also use Tealium iQ to hold config information for other 3rd party SDKs/plugins (e.g. API keys), which would give you the ability to quickly and dynamically change this information based on some information passed into Tealium iQ by a trackEvent or trackView call. For example, you could dynamically change API keys based on the Tealium environment currently loaded in the app (dev = XXXXXX, prod = YYYYYY).
 
+Note that adding a remote command which was already added previously results in overwriting the old callback with a new one. This allows you to restore remote command handlers every time the web view reloads (without restarting the app).
+
 ### RemoteCommand Code Example
 
 ```
