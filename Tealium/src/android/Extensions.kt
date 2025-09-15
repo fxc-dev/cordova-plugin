@@ -276,7 +276,7 @@ fun dispatcherFactoryFromString(name: String): DispatcherFactory? {
     }
 }
 
-fun expiryFromString(name: String) = when (name.toLowerCase(Locale.ROOT)) {
+fun expiryFromString(name: String) = when (name.lowercase(Locale.ROOT)) {
     "forever" -> Expiry.FOREVER
     "untilrestart" -> Expiry.UNTIL_RESTART
     else -> Expiry.SESSION
@@ -285,7 +285,7 @@ fun expiryFromString(name: String) = when (name.toLowerCase(Locale.ROOT)) {
 fun dispatchFromMap(map: JSONObject): Dispatch {
     val eventType = map.safeGetString(KEY_TRACK_EVENT_TYPE) ?: DispatchType.EVENT
 
-    return when (eventType.toLowerCase(Locale.ROOT)) {
+    return when (eventType.lowercase(Locale.ROOT)) {
         DispatchType.VIEW -> TealiumView(map.safeGetString(KEY_TRACK_VIEW_NAME)
             ?: DispatchType.VIEW,
             map.optJSONObject(KEY_TRACK_DATALAYER)?.let { JsonUtils.mapFor(it) })
