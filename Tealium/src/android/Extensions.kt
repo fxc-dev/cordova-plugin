@@ -47,7 +47,7 @@ fun JSONObject.toTealiumConfig(application: Application): TealiumConfig? {
     }
 
     val environment = try {
-        Environment.valueOf(environmentString.toUpperCase(Locale.ROOT) ?: "PROD")
+        Environment.valueOf(environmentString.uppercase(Locale.ROOT) ?: "PROD")
     } catch (iax: IllegalArgumentException) {
         missingRequiredProperty(KEY_CONFIG_ENV)
         Environment.PROD
@@ -208,7 +208,7 @@ private fun JSONObject.hasValue(key: String) : Boolean {
 
 fun consentPolicyFromString(name: String): ConsentPolicy? {
     return try {
-        ConsentPolicy.valueOf(name.toUpperCase(Locale.ROOT))
+        ConsentPolicy.valueOf(name.uppercase(Locale.ROOT))
     } catch (iax: IllegalArgumentException) {
         null
     }
