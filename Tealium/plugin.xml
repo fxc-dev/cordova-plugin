@@ -26,7 +26,6 @@ name="tealium-cordova-plugin">
         <plugins-plist key="TealiumCordova" string="TealiumCordova" />
         <!-- Cordova >= 2.3 -->
         <config-file target="config.xml" parent="/*">
-            <preference name="deployment-target" value="12.0" />
             <plugin name="TealiumCordova" value="TealiumCordova"/>
             <feature name="TealiumCordova">
                 <param name="ios-package" value="TealiumCordova" />
